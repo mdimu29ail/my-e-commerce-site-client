@@ -42,7 +42,9 @@ const AdminUserView = () => {
     loyaltyPoints: 0,
   });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     fetchUsers();
@@ -220,7 +222,7 @@ const AdminUserView = () => {
                               src={u.avatar || u.image}
                               className="w-full h-full object-cover absolute inset-0"
                               alt=""
-                              onError={(e) => (e.target.style.display = 'none')}
+                              onError={e => (e.target.style.display = 'none')}
                             />
                           )}
                           <span className="uppercase">{u.name.charAt(0)}</span>

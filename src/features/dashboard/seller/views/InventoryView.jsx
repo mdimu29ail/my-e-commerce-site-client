@@ -46,7 +46,9 @@ const SellerInventoryView = () => {
   const [uploadIndex, setUploadIndex] = useState(null);
   const [hexInput, setHexInput] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
   const IMGBB_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
   // ক্যাটাগরি ডিটেকশন ইঞ্জিন

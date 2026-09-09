@@ -24,7 +24,9 @@ const TrackingPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   const handleTrack = async e => {
     e.preventDefault();

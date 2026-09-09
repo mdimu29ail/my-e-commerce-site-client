@@ -128,7 +128,9 @@ const HeaderOrchestrationView = () => {
   const [isUploading, setIsUploading] = useState(null);
   const scrollRef = useRef(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
   const IMGBB_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
   // --- ডাটাবেস থেকে ডাটা ফেচ করার লজিক (রিলোড দিলে এটি কাজ করবে) ---

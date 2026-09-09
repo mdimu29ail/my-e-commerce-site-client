@@ -17,7 +17,9 @@ const ModeratorSecurityView = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     fetchUsers();

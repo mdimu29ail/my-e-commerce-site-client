@@ -26,7 +26,9 @@ const AdminOrderManagementView = () => {
   const [filterStatus, setFilterStatus] = useState('All');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     fetchOrders();
@@ -48,7 +50,9 @@ const AdminOrderManagementView = () => {
 
   const updateStatus = async (orderId, newStatus) => {
     if (newStatus === 'Cancelled') {
-      const confirmCancel = window.confirm('Are you sure you want to cancel this order? This action cannot be reversed.');
+      const confirmCancel = window.confirm(
+        'Are you sure you want to cancel this order? This action cannot be reversed.'
+      );
       if (!confirmCancel) return;
     }
 
@@ -247,7 +251,8 @@ const AdminOrderManagementView = () => {
                 {/* Commercial Panel */}
                 <div className="w-full lg:w-80 bg-stone-50 p-10 flex flex-col justify-between border-l border-stone-100 relative">
                   {/* Top Right Cancel Button for New Orders */}
-                  {(order.status === 'Order Placed' || order.status === 'Pending') && (
+                  {(order.status === 'Order Placed' ||
+                    order.status === 'Pending') && (
                     <div className="absolute top-6 right-6">
                       <button
                         onClick={() => updateStatus(order._id, 'Cancelled')}
@@ -281,12 +286,19 @@ const AdminOrderManagementView = () => {
                       <div className="grid grid-cols-2 gap-2">
                         <ActionButton
                           label="Verify"
-                          onClick={() => updateStatus(order._id, 'Processing & Verification')}
-                          active={order.status === 'Order Placed' || order.status === 'Pending'}
+                          onClick={() =>
+                            updateStatus(order._id, 'Processing & Verification')
+                          }
+                          active={
+                            order.status === 'Order Placed' ||
+                            order.status === 'Pending'
+                          }
                         />
                         <ActionButton
                           label="Ship"
-                          onClick={() => updateStatus(order._id, 'En Route to Destination')}
+                          onClick={() =>
+                            updateStatus(order._id, 'En Route to Destination')
+                          }
                           active={
                             order.status === 'Processing & Verification' ||
                             order.status === 'Processing'
@@ -294,7 +306,9 @@ const AdminOrderManagementView = () => {
                         />
                         <ActionButton
                           label="Out for Delivery"
-                          onClick={() => updateStatus(order._id, 'Out for Delivery')}
+                          onClick={() =>
+                            updateStatus(order._id, 'Out for Delivery')
+                          }
                           active={
                             order.status === 'En Route to Destination' ||
                             order.status === 'Shipped'
@@ -302,7 +316,9 @@ const AdminOrderManagementView = () => {
                         />
                         <ActionButton
                           label="Deliver"
-                          onClick={() => updateStatus(order._id, 'Successfully Delivered')}
+                          onClick={() =>
+                            updateStatus(order._id, 'Successfully Delivered')
+                          }
                           active={
                             order.status === 'Out for Delivery' ||
                             order.status === 'En Route to Destination' ||
@@ -370,7 +386,8 @@ const StatCard = ({ label, value, id }) => (
 
 const StatusBadge = ({ status }) => {
   const styles = {
-    'Successfully Delivered': 'border-emerald-200 text-emerald-600 bg-emerald-50/50',
+    'Successfully Delivered':
+      'border-emerald-200 text-emerald-600 bg-emerald-50/50',
     'En Route to Destination': 'border-blue-200 text-blue-600 bg-blue-50/50',
     'Processing & Verification':
       'border-orange-200 text-orange-600 bg-orange-50/50 animate-pulse',

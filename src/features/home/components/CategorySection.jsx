@@ -11,7 +11,9 @@ const CategorySection = () => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const scrollRef = useRef(null);
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     const fetchCategories = async () => {

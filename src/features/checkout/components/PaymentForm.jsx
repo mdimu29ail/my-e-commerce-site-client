@@ -51,7 +51,9 @@ const PaymentForm = ({
     cvv: '',
   });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // --- ফিক্সড: নিশ্চিত করা হচ্ছে এটি একটি বৈধ সংখ্যা ---
   const safeTotal = Number(finalTotal) || 0;

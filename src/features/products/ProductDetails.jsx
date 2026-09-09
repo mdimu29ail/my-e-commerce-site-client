@@ -59,7 +59,9 @@ const ProductDetails = () => {
     color: null,
   });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // --- Category UI Logic Engine (Matches Admin View) ---
   const uiStrategy = useMemo(() => {

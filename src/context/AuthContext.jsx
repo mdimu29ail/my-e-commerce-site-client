@@ -3,7 +3,9 @@ import axios from 'axios';
 
 // এপিআই কনফিগারেশন (Backend URL)
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api',
   withCredentials: true, // কুকি পাঠানোর জন্য এটি বাধ্যতামূলক
 });
 

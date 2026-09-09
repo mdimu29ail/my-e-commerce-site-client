@@ -36,7 +36,9 @@ const Shop = () => {
   const [page, setPage] = useState(Number(queryParams.get('page')) || 1);
   const [totalPages, setTotalPages] = useState(1);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     const fetchCategories = async () => {

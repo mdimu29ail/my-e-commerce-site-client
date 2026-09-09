@@ -17,12 +17,12 @@ const Checkout = () => {
 
   const [loading, setLoading] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('bKash');
-  
+
   // Enhanced Discount State
   const [discount, setDiscount] = useState({
     value: 0,
     type: 'percentage', // 'percentage' or 'fixed'
-    code: ''
+    code: '',
   });
 
   const [shippingAddress, setShippingAddress] = useState({
@@ -34,28 +34,29 @@ const Checkout = () => {
   });
 
   // --- Dynamic Calculation Engine ---
-  const { shippingCost, discountAmount, taxAmount, finalTotalPrice } = useMemo(() => {
-    const safeSubtotal = Number(subtotal) || 0;
-    const sCost = 80; // Fixed Logistics Fee
-    const tRate = 0; // Tax rate (e.g., 0.05 for 5%)
-    
-    let dAmount = 0;
-    if (discount.type === 'percentage') {
-      dAmount = Math.floor((safeSubtotal * discount.value) / 100);
-    } else {
-      dAmount = discount.value;
-    }
+  const { shippingCost, discountAmount, taxAmount, finalTotalPrice } =
+    useMemo(() => {
+      const safeSubtotal = Number(subtotal) || 0;
+      const sCost = 80; // Fixed Logistics Fee
+      const tRate = 0; // Tax rate (e.g., 0.05 for 5%)
 
-    const tAmount = Math.floor((safeSubtotal - dAmount) * tRate);
-    const fTotal = (safeSubtotal - dAmount) + sCost + tAmount;
+      let dAmount = 0;
+      if (discount.type === 'percentage') {
+        dAmount = Math.floor((safeSubtotal * discount.value) / 100);
+      } else {
+        dAmount = discount.value;
+      }
 
-    return {
-      shippingCost: sCost,
-      discountAmount: dAmount,
-      taxAmount: tAmount,
-      finalTotalPrice: fTotal > 0 ? fTotal : 0,
-    };
-  }, [subtotal, discount]);
+      const tAmount = Math.floor((safeSubtotal - dAmount) * tRate);
+      const fTotal = safeSubtotal - dAmount + sCost + tAmount;
+
+      return {
+        shippingCost: sCost,
+        discountAmount: dAmount,
+        taxAmount: tAmount,
+        finalTotalPrice: fTotal > 0 ? fTotal : 0,
+      };
+    }, [subtotal, discount]);
 
   const handleChange = e => {
     setShippingAddress({ ...shippingAddress, [e.target.name]: e.target.value });
@@ -97,7 +98,8 @@ const Checkout = () => {
       };
 
       const API_URL =
-        import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        import.meta.env.VITE_API_URL ||
+        'https://my-e-commerce-site-server.vercel.app/api';
       const { data } = await axios.post(`${API_URL}/orders`, orderData, {
         withCredentials: true,
       });

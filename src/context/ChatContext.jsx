@@ -86,8 +86,12 @@ export const ChatProvider = ({ children }) => {
     currentUserIdRef.current = currentUserId;
   }, [currentUserId]);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-  const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
+  const SOCKET_URL =
+    import.meta.env.VITE_SOCKET_URL ||
+    'https://my-e-commerce-site-server.vercel.app';
 
   const fetchConversations = useCallback(async () => {
     if (!isAuthenticated) return;
@@ -303,9 +307,7 @@ export const ChatProvider = ({ children }) => {
       const cleanReaderId = extractId(readerId);
       setMessages(prev =>
         prev.map(m =>
-          extractId(m.receiver) === cleanReaderId
-            ? { ...m, isRead: true }
-            : m
+          extractId(m.receiver) === cleanReaderId ? { ...m, isRead: true } : m
         )
       );
     });

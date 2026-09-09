@@ -41,7 +41,9 @@ const THEME_COLORS = ['#0f172a', '#e11d48', '#a8a29e', '#f5f5f4', '#44403c'];
 const AdminReportsView = () => {
   const [loading, setLoading] = useState(true);
   const [reportType, setReportType] = useState('Monthly');
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // ডামি ডাটা (Editorial Format)
   const monthlySalesData = [

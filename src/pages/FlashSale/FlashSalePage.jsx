@@ -22,7 +22,9 @@ const FlashSalePage = () => {
     minutes: 0,
     seconds: 0,
   });
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     const fetchFlashSale = async () => {

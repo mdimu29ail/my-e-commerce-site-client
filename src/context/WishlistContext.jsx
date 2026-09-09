@@ -4,7 +4,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000/api',
+  baseURL:
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api',
   withCredentials: true,
 });
 
@@ -31,14 +33,14 @@ export const WishlistProvider = ({ children }) => {
     }
   }, [user]);
 
-  const addToWishlist = async (productId) => {
+  const addToWishlist = async productId => {
     if (!user) {
       toast.error('দয়া করে লগইন করুন');
       return;
     }
     try {
       const { data } = await API.post('/wishlist', { productId });
-      setWishlistItems(data); 
+      setWishlistItems(data);
       toast.success('উইশলিস্টে যোগ করা হয়েছে');
     } catch (error) {
       console.error('Failed to add to wishlist', error.response || error);
@@ -46,7 +48,7 @@ export const WishlistProvider = ({ children }) => {
     }
   };
 
-  const removeFromWishlist = async (productId) => {
+  const removeFromWishlist = async productId => {
     if (!user) return;
     try {
       const { data } = await API.delete(`/wishlist/${productId}`);
@@ -64,7 +66,11 @@ export const WishlistProvider = ({ children }) => {
         wishlistItems,
         addToWishlist,
         removeFromWishlist,
-        isWishlisted: (productId) => Array.isArray(wishlistItems) && wishlistItems.some(item => item._id.toString() === productId.toString()),
+        isWishlisted: productId =>
+          Array.isArray(wishlistItems) &&
+          wishlistItems.some(
+            item => item._id.toString() === productId.toString()
+          ),
       }}
     >
       {children}

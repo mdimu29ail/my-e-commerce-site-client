@@ -45,7 +45,9 @@ const CategoryPage = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [viewMode, setViewMode] = useState('grid');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // ১. সব ক্যাটাগরি ফেচ করা এবং বর্তমান ক্যাটাগরি নির্ধারণ করা
   useEffect(() => {

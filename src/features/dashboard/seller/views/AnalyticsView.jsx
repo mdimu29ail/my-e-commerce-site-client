@@ -36,7 +36,9 @@ const SellerAnalyticsView = () => {
   const [orders, setOrders] = useState([]);
   const [products, setProducts] = useState([]);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // ১. মঙ্গোডিবি থেকে রিয়েল ডাটা ফেচ করা
   useEffect(() => {

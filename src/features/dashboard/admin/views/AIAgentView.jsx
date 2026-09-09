@@ -16,7 +16,9 @@ import {
 import Loader from '../../../../components/shared/Loader';
 
 // Connect to your actual backend socket
-const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:5000');
+const socket = io(
+  import.meta.env.VITE_API_URL || 'https://my-e-commerce-site-server.vercel.app'
+);
 
 const AdminAIAgentView = () => {
   const [loading, setLoading] = useState(true);
@@ -40,7 +42,9 @@ const AdminAIAgentView = () => {
   const [logs, setLogs] = useState([]);
   const logEndRef = useRef(null);
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // 1. Fetch Initial Config & Logs from Backend
   useEffect(() => {

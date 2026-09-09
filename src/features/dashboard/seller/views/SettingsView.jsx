@@ -66,7 +66,8 @@ const SellerSettingsView = () => {
     setLoading(true);
     try {
       const API_URL =
-        import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+        import.meta.env.VITE_API_URL ||
+        'https://my-e-commerce-site-server.vercel.app/api';
       // রিয়েল এপিআই কল
       const { data } = await axios.put(
         `${API_URL}/users/profile`,

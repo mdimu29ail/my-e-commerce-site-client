@@ -23,7 +23,9 @@ const AdminRoleManagementView = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   useEffect(() => {
     fetchUsers();
@@ -166,10 +168,12 @@ const AdminRoleManagementView = () => {
                               src={user.avatar || user.photoURL}
                               className="w-full h-full object-cover absolute inset-0"
                               alt=""
-                              onError={(e) => (e.target.style.display = 'none')}
+                              onError={e => (e.target.style.display = 'none')}
                             />
                           )}
-                          <span className="uppercase">{user.name.charAt(0)}</span>
+                          <span className="uppercase">
+                            {user.name.charAt(0)}
+                          </span>
                         </div>
                         <div className="absolute inset-0 bg-red-600/10 opacity-0 group-hover:opacity-100 transition-opacity" />
                       </div>

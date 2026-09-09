@@ -35,7 +35,9 @@ const UserTrackMyOrder = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   const fetchTracking = useCallback(
     async targetId => {
@@ -81,7 +83,11 @@ const UserTrackMyOrder = () => {
     if (!socket) return;
 
     const handleStatusUpdate = data => {
-      if (trackingData && trackingData.order && String(trackingData.order._id) === String(data.orderId)) {
+      if (
+        trackingData &&
+        trackingData.order &&
+        String(trackingData.order._id) === String(data.orderId)
+      ) {
         // Re-fetch tracking info or update local state
         fetchTracking(data.orderId);
       }

@@ -108,7 +108,7 @@
 //     images: [],
 //   });
 
-//   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+//   const API_URL = import.meta.env.VITE_API_URL || 'https://my-e-commerce-site-server.vercel.app/api';
 //   const IMGBB_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
 //   const activeCategoryType = useMemo(() => {
@@ -1042,7 +1042,9 @@ const AdminAddProductsView = () => {
     isFeatured: false,
   });
 
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
   const IMGBB_KEY = import.meta.env.VITE_IMGBB_API_KEY;
 
   const activeCategoryType = useMemo(() => {
