@@ -532,6 +532,33 @@ const Navbar = () => {
                               color="text-red-600"
                             />
                           )}
+
+                          {user?.role === 'moderator' && (
+                            <DropdownLink
+                              to="/moderator"
+                              icon={<LayoutDashboard size={15} />}
+                              label="Moderator Control"
+                              color="text-red-600"
+                            />
+                          )}
+
+                          {user?.role === 'seller' && (
+                            <DropdownLink
+                              to="/seller"
+                              icon={<LayoutDashboard size={15} />}
+                              label="Seller Control"
+                              color="text-red-600"
+                            />
+                          )}
+
+                          {user?.role === 'user' && (
+                            <DropdownLink
+                              to="/user"
+                              icon={<LayoutDashboard size={15} />}
+                              label="User Control"
+                              color="text-red-600"
+                            />
+                          )}
                         </div>
                         <div className="px-2 mt-3 pt-3 border-t">
                           <button
