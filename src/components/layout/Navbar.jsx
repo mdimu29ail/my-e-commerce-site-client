@@ -40,7 +40,9 @@ const Navbar = () => {
 
   // --- ডাইনামিক হেডার ডাটা স্টেট ---
   const [headerData, setHeaderData] = useState(null);
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+  const API_URL =
+    import.meta.env.VITE_API_URL ||
+    'https://my-e-commerce-site-server.vercel.app/api';
 
   // ১. মঙ্গোডিবি থেকে অ্যাডমিন প্যানেলের সেভ করা ডাটা ফেচ করা
   useEffect(() => {
